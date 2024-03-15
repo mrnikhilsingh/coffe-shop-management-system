@@ -37,12 +37,6 @@ if (isset($_GET['id'])) {
 
 		echo "<script>alert('Added to cart successfully')</script>";
 	}
-
-	// validation for cart
-	if (isset($_SESSION['user_id'])) {
-		$query = "SELECT * FROM cart WHERE product_id = {$id} AND user_id = {$_SESSION['user_id']}";
-		$rowCount = mysqli_query($conn, $query);
-	}
 ?>
 
 	<section class="home-slider owl-carousel">
@@ -77,11 +71,11 @@ if (isset($_GET['id'])) {
 								<div class="form-group d-flex">
 									<div class="select-wrap">
 										<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-										<select name="size" class="form-control">
-											<option value="Small">Small</option>
-											<option value="Medium">Medium</option>
-											<option value="Large">Large</option>
-											<option value="Extra Large">Extra Large</option>
+										<select name="" id="" class="form-control">
+											<option value="">Small</option>
+											<option value="">Medium</option>
+											<option value="">Large</option>
+											<option value="">Extra Large</option>
 										</select>
 									</div>
 								</div>
@@ -101,22 +95,14 @@ if (isset($_GET['id'])) {
 								</span>
 							</div>
 						</div>
-						<input hidden type="text" name="name" value="<?php echo $product['name']; ?>">
-						<input hidden type="text" name="image" value="<?php echo $product['image']; ?>">
-						<input hidden type="text" name="description" value="<?php echo $product['description']; ?>">
-						<input hidden type="text" name="price" value="<?php echo $product['price']; ?>">
-						<input hidden type="text" name="product-id" value="<?php echo $product['id']; ?>">
-						<?php
-						if (mysqli_num_rows($rowCount) > 0) {
-						?>
-							<button class="btn btn-primary py-3 px-4 cart" name="submit" type="submit" disabled>
-								Added to cart
-							</button>
-						<?php } else { ?>
-							<button class="btn btn-primary py-3 px-4 cart" name="submit" type="submit">
-								Add to cart
-							</button>
-						<?php } ?>
+						<input type="text" name="name" value="<?php echo $product['name']; ?>">
+						<input type="text" name="image" value="<?php echo $product['image']; ?>">
+						<input type="text" name="description" value="<?php echo $product['description']; ?>">
+						<input type="text" name="price" value="<?php echo $product['price']; ?>">
+						<input type="text" name="product-id" value="<?php echo $product['id']; ?>">
+						<button class="btn btn-primary py-3 px-4 cart" name="submit" type="submit">
+							Add to cart
+						</button>
 					</form>
 				</div>
 			</div>
